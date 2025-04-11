@@ -13,13 +13,14 @@ public class Menu {
         gestion = new GestionUsuarios();
         createUI();
     }
-
+ 
     private void createUI() {
         // Configuración de la ventana
         frame = new JFrame("Gestión de Usuarios");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 400);
         frame.setLayout(new BorderLayout());
+      
 
         // Panel de botones
         JPanel buttonPanel = new JPanel(new GridLayout(1, 4));
@@ -29,6 +30,11 @@ public class Menu {
         JButton deleteButton = new JButton("Eliminar");
         JButton listButton = new JButton("Listar");
         JButton exitButton = new JButton("Salir");
+        
+        exitButton.setBackground(Color.red);
+        addButton.setBackground(Color.GREEN);
+        deleteButton.setBackground(Color.red);
+        listButton.setBackground(Color.ORANGE);
 
         // Área de texto
         textArea = new JTextArea();
@@ -43,7 +49,7 @@ public class Menu {
 
         frame.add(buttonPanel, BorderLayout.NORTH);
         frame.add(scrollPane, BorderLayout.CENTER);
-
+        
         // Acciones de los botones
         addButton.addActionListener(e -> agregarUsuario());
         deleteButton.addActionListener(e -> eliminarUsuario());
@@ -80,3 +86,4 @@ public class Menu {
         SwingUtilities.invokeLater(() -> new Menu());
     }
 }
+
