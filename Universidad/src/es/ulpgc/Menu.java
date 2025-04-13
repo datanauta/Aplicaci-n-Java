@@ -23,7 +23,8 @@ public class Menu {
       
 
         // Panel de botones
-        JPanel buttonPanel = new JPanel(new GridLayout(1, 4));
+        JPanel buttonPanel = new JPanel(new GridLayout(4, 4));
+
 
         // Botones
         JButton addButton = new JButton("Agregar");
@@ -35,20 +36,33 @@ public class Menu {
         addButton.setBackground(Color.GREEN);
         deleteButton.setBackground(Color.red);
         listButton.setBackground(Color.ORANGE);
-
+        
+       
+        exitButton.setFont(new Font("Arial",Font.ITALIC,14));
+        addButton.setFont(new Font("Arial",Font.ITALIC,14));
+        deleteButton.setFont(new Font("Arial",Font.ITALIC, 14));
+        listButton.setFont(new Font("Arial",Font.ITALIC, 14));
+         
+         
+        
         // Área de texto
         textArea = new JTextArea();
         textArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(textArea);
-
+        textArea.setBackground(Color.WHITE);
+        
+        
         // Agregar componentes
         buttonPanel.add(addButton);
         buttonPanel.add(deleteButton);
         buttonPanel.add(listButton);
         buttonPanel.add(exitButton);
+        
+        
 
         frame.add(buttonPanel, BorderLayout.NORTH);
         frame.add(scrollPane, BorderLayout.CENTER);
+      
         
         // Acciones de los botones
         addButton.addActionListener(e -> agregarUsuario());
@@ -76,9 +90,10 @@ public class Menu {
     }
 
     private void listarUsuarios() {
+    	int id = 0;
         textArea.setText("=== Lista de Usuarios ===\n");
         for (Usuario usuario : gestion.getUsuarios()) {
-            textArea.append("- " + usuario.getNombre() + "\n");
+            textArea.append(+ id++ +".-" + usuario.getNombre() + "\n");
         }
     }
 
@@ -86,4 +101,3 @@ public class Menu {
         SwingUtilities.invokeLater(() -> new Menu());
     }
 }
-
